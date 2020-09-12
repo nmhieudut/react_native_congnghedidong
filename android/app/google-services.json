@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "803093403736",
+    "firebase_url": "https://cndd-reactnative.firebaseio.com",
+    "project_id": "cndd-reactnative",
+    "storage_bucket": "cndd-reactnative.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803093403736:android:9e4661b6d3dbd91a03922d",
+        "android_client_info": {
+          "package_name": "com.awesomeproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "803093403736-upldne6rvvaaibvp9f3rrhch5ic4ghn2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPAkhY7qG2MJ08y4EI-Q1WGwDgSmU2KpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "803093403736-upldne6rvvaaibvp9f3rrhch5ic4ghn2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

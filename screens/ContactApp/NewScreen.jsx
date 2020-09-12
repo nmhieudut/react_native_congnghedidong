@@ -6,48 +6,26 @@ import FIcon from 'react-native-vector-icons/Entypo';
 import firestore from '@react-native-firebase/firestore';
 
 export default function DetailScreen({route, navigation}) {
-  const {item} = route.params;
+  const [name, setName] = React.useState();
+  const [email, setEmail] = React.useState();
+  const [phone, setPhone] = React.useState();
 
-  const [unEditable, setUnEditable] = React.useState(true);
-  const [name, setName] = React.useState(item.user.name);
-  const [email, setEmail] = React.useState(item.user.email);
-  const [phone, setPhone] = React.useState(item.user.phoneNumber);
-  const [visible, setVisible] = React.useState(false);
-
-  const openMenu = () => setVisible(true);
-
-  const closeMenu = () => setVisible(false);
-
-  const editItem = () => {
+  const addUser = () => {
     firestore()
       .collection('Contacts')
-      .doc(item.id)
-      .set({
+      .add({
         email: email,
         name: name,
         phoneNumber: phone,
       })
       .then((res) => {
-        console.log(res);
         navigation.navigate('Home');
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  const deleteItem = () => {
-    firestore()
-      .collection('Contacts')
-      .doc(item.id)
-      .delete()
-      .then((res) => {
-        console.log(res);
-        navigation.navigate('Home');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+
   return (
     <Provider>
       <View>
@@ -63,7 +41,14 @@ export default function DetailScreen({route, navigation}) {
               <Icon name="left" size={24} color="black" />
             </TouchableOpacity>
           </View>
-          <View style={{flex: 8}}></View>
+          <View
+            style={{
+              flex: 7,
+              alignItems: 'flex-start',
+              justifyContent: 'center',
+            }}>
+            <Text style={{fontSize: 16}}>New Contact</Text>
+          </View>
           <View
             style={{
               flex: 3,
@@ -71,42 +56,15 @@ export default function DetailScreen({route, navigation}) {
               alignItems: 'center',
               justifyContent: 'space-around',
             }}>
-            {!unEditable && (
-              <TouchableOpacity onPress={editItem}>
-                <Icon name="check" size={24} color="green" />
-              </TouchableOpacity>
-            )}
-
-            <Menu
-              visible={visible}
-              onDismiss={closeMenu}
-              anchor={
-                <TouchableOpacity onPress={openMenu}>
-                  <FIcon name="dots-three-vertical" size={24} color="black" />
-                </TouchableOpacity>
-              }>
-              <Menu.Item
-                onPress={() => {
-                  setUnEditable(false), closeMenu();
-                }}
-                title="Edit"
-              />
-              <Divider />
-              <Menu.Item
-                onPress={() => {
-                  closeMenu(),
-                  deleteItem()
-                }}
-                title="Delete"
-              />
-            </Menu>
+            <TouchableOpacity onPress={addUser}>
+              <Icon name="check" size={24} color="green" />
+            </TouchableOpacity>
           </View>
         </View>
         <View>
           <TextInput
             style={{margin: 10}}
             mode="flat"
-            disabled={unEditable}
             label="Name"
             value={name}
             onChangeText={(text) => setName(text)}
@@ -114,7 +72,6 @@ export default function DetailScreen({route, navigation}) {
           <TextInput
             style={{margin: 10}}
             mode="flat"
-            disabled={unEditable}
             label="Email"
             value={email}
             onChangeText={(text) => setEmail(text)}
@@ -122,7 +79,6 @@ export default function DetailScreen({route, navigation}) {
           <TextInput
             style={{margin: 10}}
             mode="flat"
-            disabled={unEditable}
             label="Phone number"
             value={phone}
             onChangeText={(text) => setPhone(text)}

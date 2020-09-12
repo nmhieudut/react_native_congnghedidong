@@ -4,13 +4,14 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './ContactApp/HomeScreen';
 import DetailScreen from './ContactApp/DetailScreen';
+import NewScreen from './ContactApp/NewScreen';
 
 const Stack = createStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator gestureEnabled>
+      <Stack.Navigator>
         <Stack.Screen
           options={{headerShown: false}}
           name="Home"
@@ -20,6 +21,11 @@ function App() {
           options={{headerShown: false}}
           name="Detail"
           component={DetailScreen}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="New"
+          component={NewScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
