@@ -41,6 +41,7 @@ export default function DetailScreen({route, navigation}) {
               <Icon name="left" size={24} color="black" />
             </TouchableOpacity>
           </View>
+          
           <View
             style={{
               flex: 7,
