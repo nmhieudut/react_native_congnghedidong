@@ -5,7 +5,7 @@ export default function DetailScreen({route}) {
   const item = route.params.item;
   return (
     <View style={{flex: 1}}>
-      <View>
+      <View style={{margin: 10}}>
         <Image
           style={{width: '100%', height: 200}}
           source={{uri: `${item.url}`}}

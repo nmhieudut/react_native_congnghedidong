@@ -14,16 +14,29 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen
           options={{
-            title: 'Dogs',
+            title: 'Dog App',
             headerStyle: {
-              backgroundColor: '#f4511e',
+              backgroundColor: '#9e9e9e',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
             },
           }}
           name="Home"
           component={HomeScreen}
         />
         <Stack.Screen
-          options={{title: 'Detail'}}
+          options={{
+            title: 'Detail',
+            headerStyle: {
+              backgroundColor: '#f4511e',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
           name="Detail"
           component={DetailScreen}
         />
